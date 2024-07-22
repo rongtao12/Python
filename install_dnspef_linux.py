@@ -16,7 +16,7 @@ with open("install_dnsperf.sh",'w') as file:
 	file.write("git clone https://github.com/DNS-OARC/dnsperf.git")
 	file.write("cd dnsperf")
 	file.write("./autogen.sh")
-    file.write("./configure")
+    	file.write("./configure")
 	file.write("make")
 	file.write("make install")
 
