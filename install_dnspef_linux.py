@@ -7,7 +7,7 @@ import os
 
 prepare_command = ["sudo", "apt-get", "update"]  
 
-# apt-get install -y libssl-dev libldns-dev libck-dev libnghttp2-dev
+#apt-get install -y libssl-dev libldns-dev libck-dev libnghttp2-dev
 
 install_command = ["sudo", "apt-get", "install", "-y","libssl-dev","libldns-dev","libck-dev","libnghttp2-dev"]  
 subprocess.call(install_command)  
@@ -16,7 +16,7 @@ with open("install_dnsperf.sh",'w') as file:
 	file.write("git clone https://github.com/DNS-OARC/dnsperf.git")
 	file.write("cd dnsperf")
 	file.write("./autogen.sh")
-    	file.write("./configure")
+	file.write("./configure")
 	file.write("make")
 	file.write("make install")
 
