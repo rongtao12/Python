@@ -14,13 +14,11 @@ subprocess.call(install_command)
 
 
 with open("queries.txt",'w') as file:
-    file.write("www.google.com\n")
-    file.write("www.microsoft.com\n")
-    file.write("www.facebook.com\n")
+    file.write("www.google.com A \n")
+    file.write("www.microsoft.com A \n")
+    file.write("www.facebook.com A \n")
 	
-with open("server.txt",'w') as file:
-    file.write("8.8.8.8\n")
-    file.write("1.1.1.1\n")
+dns_server = "8.8.8.8"
 
-run_command = ["dnsperf","-s","server.txt","-d","queries.txt","-l","60","-c","10"]
+run_command = ["dnsperf","-s",dns_server,"-d","queries.txt","-l","60","-c","10"]
 subprocess.call(run_command) 
