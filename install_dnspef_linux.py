@@ -7,30 +7,20 @@ import os
 
 prepare_command = ["sudo", "apt-get", "update"]  
 
-#apt-get install -y libssl-dev libldns-dev libck-dev libnghttp2-dev
+# apt-get install -y libssl-dev libldns-dev libck-dev libnghttp2-dev
 
-install_command = ["sudo", "apt-get", "install", "-y","libssl-dev","libldns-dev","libck-dev","libnghttp2-dev"]  
+install_command = ["sudo", "apt-get", "install", "-y","libssl-dev","libldns-dev","libck-dev","libnghttp2-dev","dnsperf"]  
 subprocess.call(install_command)  
 
-with open("install_dnsperf.sh",'w') as file:
-	file.write("git clone https://github.com/DNS-OARC/dnsperf.git")
-	file.write("cd dnsperf")
-	file.write("./autogen.sh")
-	file.write("./configure")
-	file.write("make")
-	file.write("make install")
-
-run_install_dnsperf_command = ["sudo", "sh", "install_dnsperf.sh"]  
-subprocess.call(run_install_dnsperf_command)  
 
 with open("queries.txt",'w') as file:
-	file.write("www.google.com")
-	file.write("www.microsoft.com")
-	file.write("www.facebook.com")
+    file.write("www.google.com\n")
+    file.write("www.microsoft.com\n")
+    file.write("www.facebook.com\n")
 	
 with open("server.txt",'w') as file:
-	file.write("8.8.8.8")
-	file.write("1.1.1.1")
+    file.write("8.8.8.8\n")
+    file.write("1.1.1.1\n")
 
 run_command = ["dnsperf","-s","server.txt","-d","queries.txt","-l","60","-c","10"]
 subprocess.call(run_command) 
